@@ -14,9 +14,9 @@ namespace phoodchef.Models
     
     public partial class recRate
     {
-        public int userId { get; set; }
-        public int recId { get; set; }
-        public Nullable<int> rate { get; set; }
+        public int UserId { get; set; }
+        public int RecId { get; set; }
+        public Nullable<int> Rate { get; set; }
     
         public virtual enduser enduser { get; set; }
         public virtual recipe recipe { get; set; }

@@ -12,14 +12,8 @@ namespace phoodchef.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class recIngred
+    public partial class C__RefactorLog
     {
-        public int RecId { get; set; }
-        public int IngredId { get; set; }
-        public Nullable<decimal> Amt { get; set; }
-        public string Unit { get; set; }
-    
-        public virtual ingredient ingredient { get; set; }
-        public virtual recipe recipe { get; set; }
+        public System.Guid OperationKey { get; set; }
     }
 }

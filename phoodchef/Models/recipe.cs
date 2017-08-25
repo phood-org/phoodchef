@@ -24,14 +24,14 @@ namespace phoodchef.Models
             this.utensils = new HashSet<utensil>();
         }
     
-        public int id { get; set; }
-        public string name { get; set; }
-        public Nullable<int> cookTime { get; set; }
-        public string cookunit { get; set; }
-        public string instructions { get; set; }
-        public string yield { get; set; }
-        public Nullable<int> serveMin { get; set; }
-        public Nullable<int> serveMax { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public Nullable<decimal> CookTime { get; set; }
+        public string CookUnit { get; set; }
+        public string Instructions { get; set; }
+        public string Yield { get; set; }
+        public Nullable<int> ServeMin { get; set; }
+        public Nullable<int> ServeMax { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<recIngred> recIngreds { get; set; }

@@ -25,6 +25,7 @@ namespace phoodchef.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<C__RefactorLog> C__RefactorLog { get; set; }
         public virtual DbSet<category> categories { get; set; }
         public virtual DbSet<enduser> endusers { get; set; }
         public virtual DbSet<ingredient> ingredients { get; set; }

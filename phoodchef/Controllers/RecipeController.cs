@@ -30,21 +30,21 @@ namespace phoodchef.Controllers
             {
                 var dbRecipe = new recipe
                 {
-                    name = newRecipe.Name,
-                    cookTime = newRecipe.CookTime,
-                    cookunit = newRecipe.CookUnit,
-                    serveMax = newRecipe.ServeMax,
-                    serveMin = newRecipe.ServeMin,
+                    Name = newRecipe.Name,
+                    CookTime = newRecipe.CookTime,
+                    CookUnit = newRecipe.CookUnit,
+                    ServeMax = newRecipe.ServeMax,
+                    ServeMin = newRecipe.ServeMin,
                     //yield = newRecipe.Yield,
-                    instructions = newRecipe.Instructions
+                    Instructions = newRecipe.Instructions
                 };
 
                 db.recipes.Add(dbRecipe);
                 db.SaveChanges();
 
-                return Created($"api/recipes/{dbRecipe.id}", dbRecipe);
+                return Created($"api/recipes/{dbRecipe.ID}", dbRecipe);
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 return BadRequest("Could not add recipe to database");
             }

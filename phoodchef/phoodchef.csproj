@@ -139,6 +139,9 @@
     <Compile Include="Models\category.cs">
       <DependentUpon>phoodb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\C__RefactorLog.cs">
+      <DependentUpon>phoodb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DTOs\RecipeDto.cs" />
     <Compile Include="Models\enduser.cs">
       <DependentUpon>phoodb.tt</DependentUpon>

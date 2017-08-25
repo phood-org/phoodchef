@@ -14,10 +14,10 @@ namespace phoodchef.Models
     
     public partial class userIngred
     {
-        public int userId { get; set; }
-        public int ingredId { get; set; }
-        public Nullable<decimal> amt { get; set; }
-        public string unit { get; set; }
+        public int UserId { get; set; }
+        public int IngredId { get; set; }
+        public Nullable<decimal> Amt { get; set; }
+        public string Unit { get; set; }
     
         public virtual enduser enduser { get; set; }
         public virtual ingredient ingredient { get; set; }
