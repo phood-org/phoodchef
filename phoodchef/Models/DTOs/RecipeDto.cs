@@ -9,11 +9,11 @@ namespace phoodchef.Models.DTOs
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public TimeSpan CookTime { get; set; }
+        public int CookTime { get; set; }
         public string CookUnit { get; set; }
         public string Instructions { get; set; }
-        public double Yield { get; set; }
-        public double ServeMin { get; set; }
-        public double ServeMax { get; set; }
+        public string Yield { get; set; }
+        public int ServeMin { get; set; }
+        public int ServeMax { get; set; }
     }
 }

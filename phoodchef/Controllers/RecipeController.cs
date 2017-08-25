@@ -6,43 +6,49 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using phoodchef.Models.DTOs;
+using phoodchef.Models;
 
 namespace phoodchef.Controllers
 {
     public class RecipeController : ApiController
     {
+        private readonly phoodbEntities db = new phoodbEntities();
         // For reference: public async Task<IHttpActionResult> GetAllRecipes()
+
         [HttpGet]
         [Route("api/recipes")]
         public IHttpActionResult GetAllRecipes()
         {
-            List<RecipeDto> recipes = new List<RecipeDto>
-            {
-                new RecipeDto
-                {
-                    Id = 1,
-                    Name = "Pepperocini Beef",
-                    CookTime = TimeSpan.FromHours(8),
-                    CookUnit = "Hours",
-                    Instructions = "Buy Beef and Pepperocinis. Put in crock pot. Eat",
-                    ServeMax = 4.0,
-                    ServeMin = 2.0,
-                    Yield = 4.0
-                },
-                new RecipeDto
-                {
-                    Id = 1,
-                    Name = "Spagetti",
-                    CookTime = TimeSpan.FromMinutes(30),
-                    CookUnit = "Minutes",
-                    Instructions = "Noodles and Ragu. Done.",
-                    ServeMax = 10.0,
-                    ServeMin = 2.0,
-                    Yield = 4.0
-                }
-            };
-
-            return Ok(recipes);
+            return Ok(db.recipes);
         }
+
+        [HttpPost]
+        [Route("api/recipes")]
+        public IHttpActionResult AddRecipe([FromBody] RecipeDto newRecipe)
+        {
+            try
+            {
+                var dbRecipe = new recipe
+                {
+                    name = newRecipe.Name,
+                    cookTime = newRecipe.CookTime,
+                    cookunit = newRecipe.CookUnit,
+                    serveMax = newRecipe.ServeMax,
+                    serveMin = newRecipe.ServeMin,
+                    //yield = newRecipe.Yield,
+                    instructions = newRecipe.Instructions
+                };
+
+                db.recipes.Add(dbRecipe);
+                db.SaveChanges();
+
+                return Created($"api/recipes/{dbRecipe.id}", dbRecipe);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest("Could not add recipe to database");
+            }
+        }
+      
     }
 }

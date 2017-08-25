@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b1401e1dde0d4ff29c29c804bb66e13a" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="phoodbModel.category" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="phoodbModel.enduser" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="phoodbModel.ingredient" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="phoodbModel.library" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="phoodbModel.recIngred" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="phoodbModel.recipe" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="phoodbModel.recRate" Width="1.5" PointX="8.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="phoodbModel.userIngred" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="phoodbModel.utensil" Width="1.5" PointX="8.25" PointY="6.25" IsExpanded="true" />
+        <AssociationConnector Association="phoodbModel.FK__recRate__userId__778AC167" ManuallyRouted="false" />
+        <AssociationConnector Association="phoodbModel.FK__userIngre__userI__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="phoodbModel.FK__recIngred__ingre__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="phoodbModel.FK__userIngre__ingre__6D0D32F4" ManuallyRouted="false" />
+        <AssociationConnector Association="phoodbModel.FK__recIngred__recId__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="phoodbModel.FK__recRate__recId__787EE5A0" ManuallyRouted="false" />
+        <AssociationConnector Association="phoodbModel.recCat" ManuallyRouted="false" />
+        <AssociationConnector Association="phoodbModel.recLib" ManuallyRouted="false" />
+        <AssociationConnector Association="phoodbModel.recUten" ManuallyRouted="false" />
+        <AssociationConnector Association="phoodbModel.userLib" ManuallyRouted="false" />
+        <AssociationConnector Association="phoodbModel.userUten" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
