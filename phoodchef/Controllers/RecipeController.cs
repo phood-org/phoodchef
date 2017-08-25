@@ -19,7 +19,17 @@ namespace phoodchef.Controllers
         [Route("api/recipes")]
         public IHttpActionResult GetAllRecipes()
         {
-            return Ok(db.recipes);
+            return Ok(db.recipes.Select(r => new RecipeDto()
+            {
+                CookTime = (int) r.CookTime ,
+                CookUnit = r.CookUnit,
+                Id = r.ID,
+                Instructions = r.Instructions,
+                Name = r.Name,
+                ServeMax = (int) r.ServeMax,
+                ServeMin = (int) r.ServeMin,
+                Yield = r.Yield
+            }));
         }
 
         [HttpPost]

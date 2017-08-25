@@ -15,15 +15,15 @@
         <EntityTypeShape EntityType="phoodbModel.recRate" Width="1.5" PointX="8.25" PointY="10.375" />
         <EntityTypeShape EntityType="phoodbModel.userIngred" Width="1.5" PointX="5.25" PointY="9.75" />
         <EntityTypeShape EntityType="phoodbModel.utensil" Width="1.5" PointX="8.25" PointY="7.375" />
-        <AssociationConnector Association="phoodbModel.FK__recRate__UserId__4222D4EF" />
-        <AssociationConnector Association="phoodbModel.FK__userIngre__UserI__45F365D3" />
-        <AssociationConnector Association="phoodbModel.FK__recIngred__Ingre__3F466844" />
-        <AssociationConnector Association="phoodbModel.FK__userIngre__Ingre__46E78A0C" />
-        <AssociationConnector Association="phoodbModel.FK__recIngred__RecId__3E52440B" />
-        <AssociationConnector Association="phoodbModel.FK__recRate__RecId__4316F928" />
+        <AssociationConnector Association="phoodbModel.FK__recRate__UserId__4B7734FF" />
+        <AssociationConnector Association="phoodbModel.FK__userIngre__UserI__40058253" />
+        <AssociationConnector Association="phoodbModel.FK__recIngred__Ingre__3587F3E0" />
+        <AssociationConnector Association="phoodbModel.FK__userIngre__Ingre__40F9A68C" />
+        <AssociationConnector Association="phoodbModel.FK__recIngred__RecId__3493CFA7" />
+        <AssociationConnector Association="phoodbModel.FK__recRate__RecId__4C6B5938" />
         <AssociationConnector Association="phoodbModel.recCat" />
         <AssociationConnector Association="phoodbModel.recLib" />
-        <AssociationConnector Association="phoodbModel.RecUten" />
+        <AssociationConnector Association="phoodbModel.recUten" />
         <AssociationConnector Association="phoodbModel.userLib" />
         <AssociationConnector Association="phoodbModel.userUten" />
       </Diagram>

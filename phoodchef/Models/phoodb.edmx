@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="phoodbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="phoodbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__RefactorLog">
           <Key>
             <PropertyRef Name="OperationKey" />
@@ -87,7 +87,7 @@
           <Property Name="RecId" Type="int" Nullable="false" />
           <Property Name="Rate" Type="int" />
         </EntityType>
-        <EntityType Name="RecUten">
+        <EntityType Name="recUten">
           <Key>
             <PropertyRef Name="RecId" />
             <PropertyRef Name="UtenId" />
@@ -128,7 +128,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="100" />
         </EntityType>
-        <Association Name="FK__recCat__CatId__3C69FB99">
+        <Association Name="FK__recCat__CatId__30C33EC3">
           <End Role="category" Type="Self.category" Multiplicity="1" />
           <End Role="recCat" Type="Self.recCat" Multiplicity="*" />
           <ReferentialConstraint>
@@ -140,7 +140,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__recCat__RecId__3D5E1FD2">
+        <Association Name="FK__recCat__RecId__31B762FC">
           <End Role="recipe" Type="Self.recipe" Multiplicity="1" />
           <End Role="recCat" Type="Self.recCat" Multiplicity="*" />
           <ReferentialConstraint>
@@ -152,7 +152,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__recIngred__Ingre__3F466844">
+        <Association Name="FK__recIngred__Ingre__3587F3E0">
           <End Role="ingredient" Type="Self.ingredient" Multiplicity="1" />
           <End Role="recIngred" Type="Self.recIngred" Multiplicity="*" />
           <ReferentialConstraint>
@@ -164,7 +164,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__recIngred__RecId__3E52440B">
+        <Association Name="FK__recIngred__RecId__3493CFA7">
           <End Role="recipe" Type="Self.recipe" Multiplicity="1" />
           <End Role="recIngred" Type="Self.recIngred" Multiplicity="*" />
           <ReferentialConstraint>
@@ -176,7 +176,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__recLib__LibId__412EB0B6">
+        <Association Name="FK__recLib__LibId__3D2915A8">
           <End Role="library" Type="Self.library" Multiplicity="1" />
           <End Role="recLib" Type="Self.recLib" Multiplicity="*" />
           <ReferentialConstraint>
@@ -188,7 +188,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__recLib__RecId__403A8C7D">
+        <Association Name="FK__recLib__RecId__3C34F16F">
           <End Role="recipe" Type="Self.recipe" Multiplicity="1" />
           <End Role="recLib" Type="Self.recLib" Multiplicity="*" />
           <ReferentialConstraint>
@@ -200,7 +200,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__recRate__RecId__4316F928">
+        <Association Name="FK__recRate__RecId__4C6B5938">
           <End Role="recipe" Type="Self.recipe" Multiplicity="1" />
           <End Role="recRate" Type="Self.recRate" Multiplicity="*" />
           <ReferentialConstraint>
@@ -212,7 +212,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__recRate__UserId__4222D4EF">
+        <Association Name="FK__recRate__UserId__4B7734FF">
           <End Role="enduser" Type="Self.enduser" Multiplicity="1" />
           <End Role="recRate" Type="Self.recRate" Multiplicity="*" />
           <ReferentialConstraint>
@@ -224,31 +224,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RecUten__RecId__440B1D61">
+        <Association Name="FK__recUten__RecId__3864608B">
           <End Role="recipe" Type="Self.recipe" Multiplicity="1" />
-          <End Role="RecUten" Type="Self.RecUten" Multiplicity="*" />
+          <End Role="recUten" Type="Self.recUten" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="recipe">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="RecUten">
+            <Dependent Role="recUten">
               <PropertyRef Name="RecId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RecUten__UtenId__44FF419A">
+        <Association Name="FK__recUten__UtenId__395884C4">
           <End Role="utensil" Type="Self.utensil" Multiplicity="1" />
-          <End Role="RecUten" Type="Self.RecUten" Multiplicity="*" />
+          <End Role="recUten" Type="Self.recUten" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="utensil">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="RecUten">
+            <Dependent Role="recUten">
               <PropertyRef Name="UtenId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__userIngre__Ingre__46E78A0C">
+        <Association Name="FK__userIngre__Ingre__40F9A68C">
           <End Role="ingredient" Type="Self.ingredient" Multiplicity="1" />
           <End Role="userIngred" Type="Self.userIngred" Multiplicity="*" />
           <ReferentialConstraint>
@@ -260,7 +260,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__userIngre__UserI__45F365D3">
+        <Association Name="FK__userIngre__UserI__40058253">
           <End Role="enduser" Type="Self.enduser" Multiplicity="1" />
           <End Role="userIngred" Type="Self.userIngred" Multiplicity="*" />
           <ReferentialConstraint>
@@ -272,7 +272,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__userLib__LibId__48CFD27E">
+        <Association Name="FK__userLib__LibId__489AC854">
           <End Role="library" Type="Self.library" Multiplicity="1" />
           <End Role="userLib" Type="Self.userLib" Multiplicity="*" />
           <ReferentialConstraint>
@@ -284,7 +284,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__userLib__UserId__47DBAE45">
+        <Association Name="FK__userLib__UserId__47A6A41B">
           <End Role="enduser" Type="Self.enduser" Multiplicity="1" />
           <End Role="userLib" Type="Self.userLib" Multiplicity="*" />
           <ReferentialConstraint>
@@ -296,7 +296,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__userUten__UserId__49C3F6B7">
+        <Association Name="FK__userUten__UserId__43D61337">
           <End Role="enduser" Type="Self.enduser" Multiplicity="1" />
           <End Role="userUten" Type="Self.userUten" Multiplicity="*" />
           <ReferentialConstraint>
@@ -308,7 +308,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__userUten__UtenId__4AB81AF0">
+        <Association Name="FK__userUten__UtenId__44CA3770">
           <End Role="utensil" Type="Self.utensil" Multiplicity="1" />
           <End Role="userUten" Type="Self.userUten" Multiplicity="*" />
           <ReferentialConstraint>
@@ -331,72 +331,72 @@
           <EntitySet Name="recipe" EntityType="Self.recipe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="recLib" EntityType="Self.recLib" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="recRate" EntityType="Self.recRate" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RecUten" EntityType="Self.RecUten" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="recUten" EntityType="Self.recUten" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="userIngred" EntityType="Self.userIngred" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="userLib" EntityType="Self.userLib" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="userUten" EntityType="Self.userUten" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="utensil" EntityType="Self.utensil" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__recCat__CatId__3C69FB99" Association="Self.FK__recCat__CatId__3C69FB99">
+          <AssociationSet Name="FK__recCat__CatId__30C33EC3" Association="Self.FK__recCat__CatId__30C33EC3">
             <End Role="category" EntitySet="category" />
             <End Role="recCat" EntitySet="recCat" />
           </AssociationSet>
-          <AssociationSet Name="FK__recCat__RecId__3D5E1FD2" Association="Self.FK__recCat__RecId__3D5E1FD2">
+          <AssociationSet Name="FK__recCat__RecId__31B762FC" Association="Self.FK__recCat__RecId__31B762FC">
             <End Role="recipe" EntitySet="recipe" />
             <End Role="recCat" EntitySet="recCat" />
           </AssociationSet>
-          <AssociationSet Name="FK__recIngred__Ingre__3F466844" Association="Self.FK__recIngred__Ingre__3F466844">
+          <AssociationSet Name="FK__recIngred__Ingre__3587F3E0" Association="Self.FK__recIngred__Ingre__3587F3E0">
             <End Role="ingredient" EntitySet="ingredient" />
             <End Role="recIngred" EntitySet="recIngred" />
           </AssociationSet>
-          <AssociationSet Name="FK__recIngred__RecId__3E52440B" Association="Self.FK__recIngred__RecId__3E52440B">
+          <AssociationSet Name="FK__recIngred__RecId__3493CFA7" Association="Self.FK__recIngred__RecId__3493CFA7">
             <End Role="recipe" EntitySet="recipe" />
             <End Role="recIngred" EntitySet="recIngred" />
           </AssociationSet>
-          <AssociationSet Name="FK__recLib__LibId__412EB0B6" Association="Self.FK__recLib__LibId__412EB0B6">
+          <AssociationSet Name="FK__recLib__LibId__3D2915A8" Association="Self.FK__recLib__LibId__3D2915A8">
             <End Role="library" EntitySet="library" />
             <End Role="recLib" EntitySet="recLib" />
           </AssociationSet>
-          <AssociationSet Name="FK__recLib__RecId__403A8C7D" Association="Self.FK__recLib__RecId__403A8C7D">
+          <AssociationSet Name="FK__recLib__RecId__3C34F16F" Association="Self.FK__recLib__RecId__3C34F16F">
             <End Role="recipe" EntitySet="recipe" />
             <End Role="recLib" EntitySet="recLib" />
           </AssociationSet>
-          <AssociationSet Name="FK__recRate__RecId__4316F928" Association="Self.FK__recRate__RecId__4316F928">
+          <AssociationSet Name="FK__recRate__RecId__4C6B5938" Association="Self.FK__recRate__RecId__4C6B5938">
             <End Role="recipe" EntitySet="recipe" />
             <End Role="recRate" EntitySet="recRate" />
           </AssociationSet>
-          <AssociationSet Name="FK__recRate__UserId__4222D4EF" Association="Self.FK__recRate__UserId__4222D4EF">
+          <AssociationSet Name="FK__recRate__UserId__4B7734FF" Association="Self.FK__recRate__UserId__4B7734FF">
             <End Role="enduser" EntitySet="enduser" />
             <End Role="recRate" EntitySet="recRate" />
           </AssociationSet>
-          <AssociationSet Name="FK__RecUten__RecId__440B1D61" Association="Self.FK__RecUten__RecId__440B1D61">
+          <AssociationSet Name="FK__recUten__RecId__3864608B" Association="Self.FK__recUten__RecId__3864608B">
             <End Role="recipe" EntitySet="recipe" />
-            <End Role="RecUten" EntitySet="RecUten" />
+            <End Role="recUten" EntitySet="recUten" />
           </AssociationSet>
-          <AssociationSet Name="FK__RecUten__UtenId__44FF419A" Association="Self.FK__RecUten__UtenId__44FF419A">
+          <AssociationSet Name="FK__recUten__UtenId__395884C4" Association="Self.FK__recUten__UtenId__395884C4">
             <End Role="utensil" EntitySet="utensil" />
-            <End Role="RecUten" EntitySet="RecUten" />
+            <End Role="recUten" EntitySet="recUten" />
           </AssociationSet>
-          <AssociationSet Name="FK__userIngre__Ingre__46E78A0C" Association="Self.FK__userIngre__Ingre__46E78A0C">
+          <AssociationSet Name="FK__userIngre__Ingre__40F9A68C" Association="Self.FK__userIngre__Ingre__40F9A68C">
             <End Role="ingredient" EntitySet="ingredient" />
             <End Role="userIngred" EntitySet="userIngred" />
           </AssociationSet>
-          <AssociationSet Name="FK__userIngre__UserI__45F365D3" Association="Self.FK__userIngre__UserI__45F365D3">
+          <AssociationSet Name="FK__userIngre__UserI__40058253" Association="Self.FK__userIngre__UserI__40058253">
             <End Role="enduser" EntitySet="enduser" />
             <End Role="userIngred" EntitySet="userIngred" />
           </AssociationSet>
-          <AssociationSet Name="FK__userLib__LibId__48CFD27E" Association="Self.FK__userLib__LibId__48CFD27E">
+          <AssociationSet Name="FK__userLib__LibId__489AC854" Association="Self.FK__userLib__LibId__489AC854">
             <End Role="library" EntitySet="library" />
             <End Role="userLib" EntitySet="userLib" />
           </AssociationSet>
-          <AssociationSet Name="FK__userLib__UserId__47DBAE45" Association="Self.FK__userLib__UserId__47DBAE45">
+          <AssociationSet Name="FK__userLib__UserId__47A6A41B" Association="Self.FK__userLib__UserId__47A6A41B">
             <End Role="enduser" EntitySet="enduser" />
             <End Role="userLib" EntitySet="userLib" />
           </AssociationSet>
-          <AssociationSet Name="FK__userUten__UserId__49C3F6B7" Association="Self.FK__userUten__UserId__49C3F6B7">
+          <AssociationSet Name="FK__userUten__UserId__43D61337" Association="Self.FK__userUten__UserId__43D61337">
             <End Role="enduser" EntitySet="enduser" />
             <End Role="userUten" EntitySet="userUten" />
           </AssociationSet>
-          <AssociationSet Name="FK__userUten__UtenId__4AB81AF0" Association="Self.FK__userUten__UtenId__4AB81AF0">
+          <AssociationSet Name="FK__userUten__UtenId__44CA3770" Association="Self.FK__userUten__UtenId__44CA3770">
             <End Role="utensil" EntitySet="utensil" />
             <End Role="userUten" EntitySet="userUten" />
           </AssociationSet>
@@ -416,27 +416,27 @@
           <EntitySet Name="recRates" EntityType="phoodbModel.recRate" />
           <EntitySet Name="userIngreds" EntityType="phoodbModel.userIngred" />
           <EntitySet Name="utensils" EntityType="phoodbModel.utensil" />
-          <AssociationSet Name="FK__recRate__UserId__4222D4EF" Association="phoodbModel.FK__recRate__UserId__4222D4EF">
+          <AssociationSet Name="FK__recRate__UserId__4B7734FF" Association="phoodbModel.FK__recRate__UserId__4B7734FF">
             <End Role="enduser" EntitySet="endusers" />
             <End Role="recRate" EntitySet="recRates" />
           </AssociationSet>
-          <AssociationSet Name="FK__userIngre__UserI__45F365D3" Association="phoodbModel.FK__userIngre__UserI__45F365D3">
+          <AssociationSet Name="FK__userIngre__UserI__40058253" Association="phoodbModel.FK__userIngre__UserI__40058253">
             <End Role="enduser" EntitySet="endusers" />
             <End Role="userIngred" EntitySet="userIngreds" />
           </AssociationSet>
-          <AssociationSet Name="FK__recIngred__Ingre__3F466844" Association="phoodbModel.FK__recIngred__Ingre__3F466844">
+          <AssociationSet Name="FK__recIngred__Ingre__3587F3E0" Association="phoodbModel.FK__recIngred__Ingre__3587F3E0">
             <End Role="ingredient" EntitySet="ingredients" />
             <End Role="recIngred" EntitySet="recIngreds" />
           </AssociationSet>
-          <AssociationSet Name="FK__userIngre__Ingre__46E78A0C" Association="phoodbModel.FK__userIngre__Ingre__46E78A0C">
+          <AssociationSet Name="FK__userIngre__Ingre__40F9A68C" Association="phoodbModel.FK__userIngre__Ingre__40F9A68C">
             <End Role="ingredient" EntitySet="ingredients" />
             <End Role="userIngred" EntitySet="userIngreds" />
           </AssociationSet>
-          <AssociationSet Name="FK__recIngred__RecId__3E52440B" Association="phoodbModel.FK__recIngred__RecId__3E52440B">
+          <AssociationSet Name="FK__recIngred__RecId__3493CFA7" Association="phoodbModel.FK__recIngred__RecId__3493CFA7">
             <End Role="recipe" EntitySet="recipes" />
             <End Role="recIngred" EntitySet="recIngreds" />
           </AssociationSet>
-          <AssociationSet Name="FK__recRate__RecId__4316F928" Association="phoodbModel.FK__recRate__RecId__4316F928">
+          <AssociationSet Name="FK__recRate__RecId__4C6B5938" Association="phoodbModel.FK__recRate__RecId__4C6B5938">
             <End Role="recipe" EntitySet="recipes" />
             <End Role="recRate" EntitySet="recRates" />
           </AssociationSet>
@@ -448,7 +448,7 @@
             <End Role="library" EntitySet="libraries" />
             <End Role="recipe" EntitySet="recipes" />
           </AssociationSet>
-          <AssociationSet Name="RecUten" Association="phoodbModel.RecUten">
+          <AssociationSet Name="recUten" Association="phoodbModel.recUten">
             <End Role="recipe" EntitySet="recipes" />
             <End Role="utensil" EntitySet="utensils" />
           </AssociationSet>
@@ -481,8 +481,8 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="recRates" Relationship="phoodbModel.FK__recRate__UserId__4222D4EF" FromRole="enduser" ToRole="recRate" />
-          <NavigationProperty Name="userIngreds" Relationship="phoodbModel.FK__userIngre__UserI__45F365D3" FromRole="enduser" ToRole="userIngred" />
+          <NavigationProperty Name="recRates" Relationship="phoodbModel.FK__recRate__UserId__4B7734FF" FromRole="enduser" ToRole="recRate" />
+          <NavigationProperty Name="userIngreds" Relationship="phoodbModel.FK__userIngre__UserI__40058253" FromRole="enduser" ToRole="userIngred" />
           <NavigationProperty Name="libraries" Relationship="phoodbModel.userLib" FromRole="enduser" ToRole="library" />
           <NavigationProperty Name="utensils" Relationship="phoodbModel.userUten" FromRole="enduser" ToRole="utensil" />
         </EntityType>
@@ -492,8 +492,8 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="recIngreds" Relationship="phoodbModel.FK__recIngred__Ingre__3F466844" FromRole="ingredient" ToRole="recIngred" />
-          <NavigationProperty Name="userIngreds" Relationship="phoodbModel.FK__userIngre__Ingre__46E78A0C" FromRole="ingredient" ToRole="userIngred" />
+          <NavigationProperty Name="recIngreds" Relationship="phoodbModel.FK__recIngred__Ingre__3587F3E0" FromRole="ingredient" ToRole="recIngred" />
+          <NavigationProperty Name="userIngreds" Relationship="phoodbModel.FK__userIngre__Ingre__40F9A68C" FromRole="ingredient" ToRole="userIngred" />
         </EntityType>
         <EntityType Name="library">
           <Key>
@@ -513,8 +513,8 @@
           <Property Name="IngredId" Type="Int32" Nullable="false" />
           <Property Name="Amt" Type="Decimal" Precision="6" Scale="3" />
           <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ingredient" Relationship="phoodbModel.FK__recIngred__Ingre__3F466844" FromRole="recIngred" ToRole="ingredient" />
-          <NavigationProperty Name="recipe" Relationship="phoodbModel.FK__recIngred__RecId__3E52440B" FromRole="recIngred" ToRole="recipe" />
+          <NavigationProperty Name="ingredient" Relationship="phoodbModel.FK__recIngred__Ingre__3587F3E0" FromRole="recIngred" ToRole="ingredient" />
+          <NavigationProperty Name="recipe" Relationship="phoodbModel.FK__recIngred__RecId__3493CFA7" FromRole="recIngred" ToRole="recipe" />
         </EntityType>
         <EntityType Name="recipe">
           <Key>
@@ -528,11 +528,11 @@
           <Property Name="Yield" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ServeMin" Type="Int32" />
           <Property Name="ServeMax" Type="Int32" />
-          <NavigationProperty Name="recIngreds" Relationship="phoodbModel.FK__recIngred__RecId__3E52440B" FromRole="recipe" ToRole="recIngred" />
-          <NavigationProperty Name="recRates" Relationship="phoodbModel.FK__recRate__RecId__4316F928" FromRole="recipe" ToRole="recRate" />
+          <NavigationProperty Name="recIngreds" Relationship="phoodbModel.FK__recIngred__RecId__3493CFA7" FromRole="recipe" ToRole="recIngred" />
+          <NavigationProperty Name="recRates" Relationship="phoodbModel.FK__recRate__RecId__4C6B5938" FromRole="recipe" ToRole="recRate" />
           <NavigationProperty Name="categories" Relationship="phoodbModel.recCat" FromRole="recipe" ToRole="category" />
           <NavigationProperty Name="libraries" Relationship="phoodbModel.recLib" FromRole="recipe" ToRole="library" />
-          <NavigationProperty Name="utensils" Relationship="phoodbModel.RecUten" FromRole="recipe" ToRole="utensil" />
+          <NavigationProperty Name="utensils" Relationship="phoodbModel.recUten" FromRole="recipe" ToRole="utensil" />
         </EntityType>
         <EntityType Name="recRate">
           <Key>
@@ -542,8 +542,8 @@
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="RecId" Type="Int32" Nullable="false" />
           <Property Name="Rate" Type="Int32" />
-          <NavigationProperty Name="enduser" Relationship="phoodbModel.FK__recRate__UserId__4222D4EF" FromRole="recRate" ToRole="enduser" />
-          <NavigationProperty Name="recipe" Relationship="phoodbModel.FK__recRate__RecId__4316F928" FromRole="recRate" ToRole="recipe" />
+          <NavigationProperty Name="enduser" Relationship="phoodbModel.FK__recRate__UserId__4B7734FF" FromRole="recRate" ToRole="enduser" />
+          <NavigationProperty Name="recipe" Relationship="phoodbModel.FK__recRate__RecId__4C6B5938" FromRole="recRate" ToRole="recipe" />
         </EntityType>
         <EntityType Name="userIngred">
           <Key>
@@ -554,8 +554,8 @@
           <Property Name="IngredId" Type="Int32" Nullable="false" />
           <Property Name="Amt" Type="Decimal" Precision="6" Scale="3" />
           <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="enduser" Relationship="phoodbModel.FK__userIngre__UserI__45F365D3" FromRole="userIngred" ToRole="enduser" />
-          <NavigationProperty Name="ingredient" Relationship="phoodbModel.FK__userIngre__Ingre__46E78A0C" FromRole="userIngred" ToRole="ingredient" />
+          <NavigationProperty Name="enduser" Relationship="phoodbModel.FK__userIngre__UserI__40058253" FromRole="userIngred" ToRole="enduser" />
+          <NavigationProperty Name="ingredient" Relationship="phoodbModel.FK__userIngre__Ingre__40F9A68C" FromRole="userIngred" ToRole="ingredient" />
         </EntityType>
         <EntityType Name="utensil">
           <Key>
@@ -563,10 +563,10 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="recipes" Relationship="phoodbModel.RecUten" FromRole="utensil" ToRole="recipe" />
+          <NavigationProperty Name="recipes" Relationship="phoodbModel.recUten" FromRole="utensil" ToRole="recipe" />
           <NavigationProperty Name="endusers" Relationship="phoodbModel.userUten" FromRole="utensil" ToRole="enduser" />
         </EntityType>
-        <Association Name="FK__recRate__UserId__4222D4EF">
+        <Association Name="FK__recRate__UserId__4B7734FF">
           <End Type="phoodbModel.enduser" Role="enduser" Multiplicity="1" />
           <End Type="phoodbModel.recRate" Role="recRate" Multiplicity="*" />
           <ReferentialConstraint>
@@ -578,7 +578,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__userIngre__UserI__45F365D3">
+        <Association Name="FK__userIngre__UserI__40058253">
           <End Type="phoodbModel.enduser" Role="enduser" Multiplicity="1" />
           <End Type="phoodbModel.userIngred" Role="userIngred" Multiplicity="*" />
           <ReferentialConstraint>
@@ -590,7 +590,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__recIngred__Ingre__3F466844">
+        <Association Name="FK__recIngred__Ingre__3587F3E0">
           <End Type="phoodbModel.ingredient" Role="ingredient" Multiplicity="1" />
           <End Type="phoodbModel.recIngred" Role="recIngred" Multiplicity="*" />
           <ReferentialConstraint>
@@ -602,7 +602,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__userIngre__Ingre__46E78A0C">
+        <Association Name="FK__userIngre__Ingre__40F9A68C">
           <End Type="phoodbModel.ingredient" Role="ingredient" Multiplicity="1" />
           <End Type="phoodbModel.userIngred" Role="userIngred" Multiplicity="*" />
           <ReferentialConstraint>
@@ -614,7 +614,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__recIngred__RecId__3E52440B">
+        <Association Name="FK__recIngred__RecId__3493CFA7">
           <End Type="phoodbModel.recipe" Role="recipe" Multiplicity="1" />
           <End Type="phoodbModel.recIngred" Role="recIngred" Multiplicity="*" />
           <ReferentialConstraint>
@@ -626,7 +626,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__recRate__RecId__4316F928">
+        <Association Name="FK__recRate__RecId__4C6B5938">
           <End Type="phoodbModel.recipe" Role="recipe" Multiplicity="1" />
           <End Type="phoodbModel.recRate" Role="recRate" Multiplicity="*" />
           <ReferentialConstraint>
@@ -646,7 +646,7 @@
           <End Type="phoodbModel.library" Role="library" Multiplicity="*" />
           <End Type="phoodbModel.recipe" Role="recipe" Multiplicity="*" />
         </Association>
-        <Association Name="RecUten">
+        <Association Name="recUten">
           <End Type="phoodbModel.recipe" Role="recipe" Multiplicity="*" />
           <End Type="phoodbModel.utensil" Role="utensil" Multiplicity="*" />
         </Association>
@@ -658,7 +658,7 @@
           <End Type="phoodbModel.enduser" Role="enduser" Multiplicity="*" />
           <End Type="phoodbModel.utensil" Role="utensil" Multiplicity="*" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -770,7 +770,7 @@
               <ScalarProperty Name="ID" ColumnName="LibId" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="RecUten" TypeName="phoodbModel.RecUten" StoreEntitySet="RecUten">
+          <AssociationSetMapping Name="recUten" TypeName="phoodbModel.recUten" StoreEntitySet="recUten">
             <EndProperty Name="utensil">
               <ScalarProperty Name="ID" ColumnName="UtenId" />
             </EndProperty>
