@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using phoodchef.Models.DTOs;
 using phoodchef.Models;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using Newtonsoft.Json.Linq;
 
 namespace phoodchef.Controllers
 {
@@ -19,17 +22,24 @@ namespace phoodchef.Controllers
         [Route("api/recipes")]
         public IHttpActionResult GetAllRecipes()
         {
-            return Ok(db.recipes.Select(r => new RecipeDto()
+            var result = db.recipes.ProjectTo<RecipeDto>().ToList();
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("api/recipes/{id:int}")]
+        public IHttpActionResult GetSingleRecipe(int id)
+        {
+            var dbRecipe = db.recipes.FirstOrDefault(r => r.ID == id);
+            if (dbRecipe != default(recipe))
             {
-                CookTime = (int) r.CookTime ,
-                CookUnit = r.CookUnit,
-                Id = r.ID,
-                Instructions = r.Instructions,
-                Name = r.Name,
-                ServeMax = (int) r.ServeMax,
-                ServeMin = (int) r.ServeMin,
-                Yield = r.Yield
-            }));
+                var result = Mapper.Map<recipe, RecipeDto>(dbRecipe);
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest($"Could not find recipe with ID {id}");
+            }
         }
 
         [HttpPost]
@@ -38,16 +48,7 @@ namespace phoodchef.Controllers
         {
             try
             {
-                var dbRecipe = new recipe
-                {
-                    Name = newRecipe.Name,
-                    CookTime = newRecipe.CookTime,
-                    CookUnit = newRecipe.CookUnit,
-                    ServeMax = newRecipe.ServeMax,
-                    ServeMin = newRecipe.ServeMin,
-                    //yield = newRecipe.Yield,
-                    Instructions = newRecipe.Instructions
-                };
+                var dbRecipe = Mapper.Map<RecipeDto, recipe>(newRecipe);
 
                 db.recipes.Add(dbRecipe);
                 db.SaveChanges();
@@ -59,6 +60,51 @@ namespace phoodchef.Controllers
                 return BadRequest("Could not add recipe to database");
             }
         }
-      
+
+        [HttpDelete]
+        [Route("api/recipes/{id:int}")]
+        public IHttpActionResult DeleteRecipe(int id)
+        {
+            var dbRecipe = db.recipes.FirstOrDefault(r => r.ID == id);
+            if (dbRecipe != default(recipe))
+            {
+                db.recipes.Remove(dbRecipe);
+                db.SaveChanges();
+                return Ok();
+            }
+            else
+            {
+                return BadRequest($"Recipe with ID {id} does not exist and could not be deleted.");
+            }
+        }
+
+        [HttpPatch]
+        [Route("api/recipes/{id:int}")]
+        public IHttpActionResult UpdateRecipe(int id, [FromBody]JObject patchRecipe)
+        {
+
+            throw new NotImplementedException();
+            // get the expense from the repository
+            var dbRecipe = db.recipes.FirstOrDefault(r => r.ID == id);
+            if(dbRecipe == default(recipe))
+            {
+                return BadRequest($"Recipe with ID {id} does not exist and could not be updated.");
+            }
+
+            // apply the patch document 
+            try
+            {
+                Type recipeType = typeof(recipe);
+                foreach(var property in patchRecipe.Children())
+                {
+                }
+            }
+            catch (Exception)
+            {
+                return BadRequest($"Could not apply patch to recipe with ID {id}.");
+            }
+
+            return Ok(Mapper.Map<recipe, RecipeDto>(dbRecipe));
+        }
     }
 }
