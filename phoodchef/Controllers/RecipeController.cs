@@ -10,6 +10,7 @@ using phoodchef.Models;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Newtonsoft.Json.Linq;
+using System.Reflection;
 
 namespace phoodchef.Controllers
 {
@@ -83,28 +84,45 @@ namespace phoodchef.Controllers
         public IHttpActionResult UpdateRecipe(int id, [FromBody]JObject patchRecipe)
         {
 
-            throw new NotImplementedException();
             // get the expense from the repository
             var dbRecipe = db.recipes.FirstOrDefault(r => r.ID == id);
             if(dbRecipe == default(recipe))
             {
-                return BadRequest($"Recipe with ID {id} does not exist and could not be updated.");
+                return new ReturnWrapper(HttpStatusCode.BadRequest, $"Recipe with ID {id} does not exist and could not be updated.");
             }
 
+            // Convert dbRecipe to RecipeDTO
+            var recipeDto = Mapper.Map<recipe, RecipeDto>(dbRecipe);
+
+            var errorMessages = new List<string>();
             // apply the patch document 
             try
             {
-                Type recipeType = typeof(recipe);
-                foreach(var property in patchRecipe.Children())
+                //Type recipeType = typeof(recipe);
+                foreach (JProperty property in patchRecipe.Properties())
                 {
+                    var prop = typeof(RecipeDto)
+                        .GetProperty(property.Name,
+                        BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance); 
+                    if(prop != null && prop.CanWrite)
+                    {
+                        prop.SetValue(recipeDto, property.Value.ToObject(prop.PropertyType));
+                    } else
+                    {
+                        errorMessages.Add($"Could not update the {property.Name} property. Are you sure it exists?");
+                    }
                 }
+
+                dbRecipe = Mapper.Map<RecipeDto, recipe>(recipeDto, dbRecipe);
+                db.SaveChanges();
+
             }
             catch (Exception)
             {
-                return BadRequest($"Could not apply patch to recipe with ID {id}.");
+                return new ReturnWrapper(HttpStatusCode.BadRequest, $"Could not apply patch to recipe with ID {id}.");
             }
 
-            return Ok(Mapper.Map<recipe, RecipeDto>(dbRecipe));
+            return new ReturnWrapper(Mapper.Map<recipe, RecipeDto>(dbRecipe), errorMessages);
         }
     }
 }
