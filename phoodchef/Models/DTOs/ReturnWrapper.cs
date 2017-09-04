@@ -31,9 +31,14 @@ namespace phoodchef.Models.DTOs
         public ReturnWrapper(HttpStatusCode statusCode, string message)
         {
             StatusCode = statusCode;
+            bool successFlag;
+
+            if (statusCode == HttpStatusCode.OK) { successFlag = true; }
+            else { successFlag = false; }
+
             returnObj = new ReturnObj
             {
-                IsSuccess = false,
+                IsSuccess = successFlag,
                 FormattedMessage = new List<string> { message },
                 Data = null
             };
@@ -42,11 +47,27 @@ namespace phoodchef.Models.DTOs
         public ReturnWrapper(HttpStatusCode statusCode, List<string> message)
         {
             StatusCode = statusCode;
+            bool successFlag;
+
+            if (statusCode == HttpStatusCode.OK) { successFlag = true; }
+            else { successFlag = false; }
+
             returnObj = new ReturnObj
             {
-                IsSuccess = false,
+                IsSuccess = successFlag,
                 FormattedMessage = message,
                 Data = null
+            };
+        }
+
+        public ReturnWrapper(dynamic data, string message)
+        {
+            StatusCode = HttpStatusCode.OK;
+            returnObj = new ReturnObj
+            {
+                IsSuccess = true,
+                FormattedMessage = new List<string> { message },
+                Data = data
             };
         }
 

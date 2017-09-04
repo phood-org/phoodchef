@@ -24,7 +24,8 @@ namespace phoodchef.Controllers
         public IHttpActionResult GetAllRecipes()
         {
             var result = db.recipes.ProjectTo<RecipeDto>().ToList();
-            return Ok(result);
+
+            return new ReturnWrapper(result);
         }
 
         [HttpGet]
@@ -34,12 +35,11 @@ namespace phoodchef.Controllers
             var dbRecipe = db.recipes.FirstOrDefault(r => r.ID == id);
             if (dbRecipe != default(recipe))
             {
-                var result = Mapper.Map<recipe, RecipeDto>(dbRecipe);
-                return Ok(result);
+                return new ReturnWrapper(Mapper.Map<recipe, RecipeDto>(dbRecipe));
             }
             else
             {
-                return BadRequest($"Could not find recipe with ID {id}");
+                return new ReturnWrapper(HttpStatusCode.BadRequest, $"Could not find recipe with ID {id}");
             }
         }
 
@@ -53,12 +53,12 @@ namespace phoodchef.Controllers
 
                 db.recipes.Add(dbRecipe);
                 db.SaveChanges();
-
-                return Created($"api/recipes/{dbRecipe.ID}", dbRecipe);
+                return new ReturnWrapper(Mapper.Map<recipe, RecipeDto>(dbRecipe), $"Recipe {dbRecipe.ID} added to database"); 
+                //return Created($"api/recipes/{dbRecipe.ID}", dbRecipe);
             }
             catch(Exception)
             {
-                return BadRequest("Could not add recipe to database");
+                return new ReturnWrapper(HttpStatusCode.BadRequest, "Could not add recipe to database");
             }
         }
 
@@ -71,11 +71,12 @@ namespace phoodchef.Controllers
             {
                 db.recipes.Remove(dbRecipe);
                 db.SaveChanges();
-                return Ok();
+                //return Ok();
+                return new ReturnWrapper(HttpStatusCode.OK, $"Recipe with ID {id} has been deleted from the database.");
             }
             else
             {
-                return BadRequest($"Recipe with ID {id} does not exist and could not be deleted.");
+                return new ReturnWrapper(HttpStatusCode.BadRequest, $"Recipe with ID {id} does not exist and could not be deleted.");
             }
         }
 
