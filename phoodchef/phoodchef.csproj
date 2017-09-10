@@ -133,6 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\LibraryController.cs" />
     <Compile Include="Controllers\RecipeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -143,6 +144,7 @@
     <Compile Include="Models\C__RefactorLog.cs">
       <DependentUpon>phoodb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DTOs\LibraryDto.cs" />
     <Compile Include="Models\DTOs\RecipeDto.cs" />
     <Compile Include="Models\DTOs\ReturnWrapper.cs" />
     <Compile Include="Models\enduser.cs">

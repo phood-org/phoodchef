@@ -20,6 +20,11 @@ namespace phoodchef
 
             Mapper.Initialize(cfg => {
                 cfg.CreateMap<recipe, RecipeDto>().ReverseMap();
+                cfg.CreateMap<library, LibraryDto>()
+                    .ForMember(
+                        dest => dest.Recipes,
+                        opt => opt.MapFrom(src => src.recipes.Select(r => r.ID).ToList()));//.ReverseMap();
+                cfg.CreateMap<LibraryDto, library>();
             });
 
             GlobalConfiguration.Configure(WebApiConfig.Register);
