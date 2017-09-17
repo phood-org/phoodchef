@@ -25,6 +25,13 @@ namespace phoodchef
                         dest => dest.Recipes,
                         opt => opt.MapFrom(src => src.recipes.Select(r => r.ID).ToList()));//.ReverseMap();
                 cfg.CreateMap<LibraryDto, library>();
+
+                //Roughed out mappings -- will need to be fleshed out more later
+                cfg.CreateMap<enduser, EnduserDto>().ReverseMap();
+                cfg.CreateMap<category, CategoryDto>().ReverseMap();
+                cfg.CreateMap<ingredient, IngredientDto>().ReverseMap();
+                cfg.CreateMap<utensil, UtensilDto>().ReverseMap();
+
             });
 
             GlobalConfiguration.Configure(WebApiConfig.Register);

@@ -133,6 +133,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\UtensilController.cs" />
+    <Compile Include="Controllers\IngredientController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\EnduserController.cs" />
     <Compile Include="Controllers\LibraryController.cs" />
     <Compile Include="Controllers\RecipeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -144,6 +148,10 @@
     <Compile Include="Models\C__RefactorLog.cs">
       <DependentUpon>phoodb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DTOs\UtensilDto.cs" />
+    <Compile Include="Models\DTOs\IngredientDto.cs" />
+    <Compile Include="Models\DTOs\EnduserDto.cs" />
+    <Compile Include="Models\DTOs\CategoryDto.cs" />
     <Compile Include="Models\DTOs\LibraryDto.cs" />
     <Compile Include="Models\DTOs\RecipeDto.cs" />
     <Compile Include="Models\DTOs\ReturnWrapper.cs" />
