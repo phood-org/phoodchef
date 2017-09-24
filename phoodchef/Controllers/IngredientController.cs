@@ -21,9 +21,15 @@ namespace phoodchef.Controllers
 
         [HttpGet]
         [Route("api/ingredients")]
-        public IHttpActionResult GetAllIngredients()
+        public IHttpActionResult GetAllIngredients([FromUri] int limit = 10, [FromUri] int page = 1, [FromUri] string search = null)
         {
-            var result = db.ingredients.ProjectTo<IngredientDto>().ToList();
+            var result = db.ingredients
+                .Where(i => search == null || i.Name.Contains(search))
+                .OrderBy(i => i.ID)
+                .Skip((page - 1) * limit)
+                .Take(limit)
+                .ProjectTo<IngredientDto>()
+                .ToList();
             return new ReturnWrapper(result);
         }
 
