@@ -131,5 +131,47 @@ namespace phoodchef.Controllers
 
             return new ReturnWrapper(Mapper.Map<recipe, RecipeDto>(dbRecipe), errorMessages);
         }
+
+        [HttpPost]
+        [Route("api/recipes/{id:int}/ingredients")]
+        public IHttpActionResult AddIngredientToRecipe(int id, [FromBody]RecIngredDto recIngredDto)
+        {
+            var dbRecipe = db.recipes.FirstOrDefault(r => r.ID == id);
+            var dbIngredient = db.ingredients.FirstOrDefault(i => i.ID == recIngredDto.IngredientId);
+
+            List<string> errors = new List<string>();
+
+            if (dbRecipe == default(recipe))
+            {
+                errors.Add($"Recipe with ID {id} does not exist and could not be added to");
+            }
+            if (dbIngredient == default(ingredient))
+            {
+                errors.Add($"Ingredient with ID {recIngredDto.IngredientId} does not exist and could not be added to recipe.");
+            }
+            if (errors.Any())
+            {
+                return new ReturnWrapper(HttpStatusCode.BadRequest, errors);
+            }
+
+            if (db.recIngreds.Where(ri => ri.RecId == dbRecipe.ID && ri.IngredId == dbIngredient.ID).Any())
+            {
+                errors.Add($"Ingredient {dbIngredient.ID} already added to Recipe {dbRecipe.ID}");
+                return new ReturnWrapper(HttpStatusCode.BadRequest, errors);
+            }
+
+            var dbRecIngred = new recIngred()
+            {
+                recipe = dbRecipe,
+                ingredient = dbIngredient,
+                Unit = recIngredDto.Unit,
+                Amt = recIngredDto.Amt
+            };
+
+            dbRecipe.recIngreds.Add(dbRecIngred);
+            db.SaveChanges();
+            return new ReturnWrapper(Mapper.Map<recipe, RecipeDto>(dbRecipe));
+        }
+
     }
 }

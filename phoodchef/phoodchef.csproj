@@ -148,6 +148,7 @@
     <Compile Include="Models\C__RefactorLog.cs">
       <DependentUpon>phoodb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DTOs\RecIngredDto.cs" />
     <Compile Include="Models\DTOs\UtensilDto.cs" />
     <Compile Include="Models\DTOs\IngredientDto.cs" />
     <Compile Include="Models\DTOs\EnduserDto.cs" />

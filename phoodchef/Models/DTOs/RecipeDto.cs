@@ -15,5 +15,8 @@ namespace phoodchef.Models.DTOs
         public string Yield { get; set; }
         public int? ServeMin { get; set; }
         public int? ServeMax { get; set; }
+
+        public List<int> Ingredients { get; set; }
+        public List<int> Utensils { get; set; }
     }
 }
