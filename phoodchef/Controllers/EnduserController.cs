@@ -21,9 +21,15 @@ namespace phoodchef.Controllers
 
         [HttpGet]
         [Route("api/endusers")]
-        public IHttpActionResult GetAllEndusers()
+        public IHttpActionResult GetAllEndusers([FromUri] int limit = 10, [FromUri] int page = 1, [FromUri] string search = null)
         {
-            var result = db.endusers.ProjectTo<EnduserDto>().ToList();
+            var result = db.endusers
+                .Where(e => search == null || e.Name.Contains(search))
+                .OrderBy(e => e.ID)
+                .Skip((page - 1) * limit)
+                .Take(limit)
+                .ProjectTo<EnduserDto>()
+                .ToList();
             return new ReturnWrapper(result);
         }
 
