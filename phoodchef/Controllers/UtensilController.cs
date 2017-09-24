@@ -21,9 +21,16 @@ namespace phoodchef.Controllers
 
         [HttpGet]
         [Route("api/utensils")]
-        public IHttpActionResult GetAllUtensils()
+        public IHttpActionResult GetAllUtensils([FromUri] int limit = 10, [FromUri] int page = 1, [FromUri] string search = null)
         {
-            var result = db.utensils.ProjectTo<UtensilDto>().ToList();
+            var result = db.utensils
+                    .Where(u => search == null || u.Name.Contains(search))
+                    .OrderBy(u => u.ID)
+                    .Skip((page- 1) * limit)
+                    .Take(limit)
+                    .ProjectTo<UtensilDto>()
+                    .ToList();
+ 
             return new ReturnWrapper(result);
         }
 
