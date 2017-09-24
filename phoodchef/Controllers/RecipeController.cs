@@ -21,9 +21,15 @@ namespace phoodchef.Controllers
 
         [HttpGet]
         [Route("api/recipes")]
-        public IHttpActionResult GetAllRecipes()
+        public IHttpActionResult GetAllRecipes([FromUri] int limit = 10, [FromUri] int page = 1, [FromUri] string search = null)
         {
-            var result = db.recipes.ProjectTo<RecipeDto>().ToList();
+            var result = db.recipes
+                .Where(r => search == null || r.Name.Contains(search))
+                .OrderBy(r => r.ID)
+                .Skip((page - 1) * limit)
+                .Take(limit)
+                .ProjectTo<RecipeDto>()
+                .ToList();
 
             return new ReturnWrapper(result);
         }
