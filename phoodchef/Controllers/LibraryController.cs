@@ -21,9 +21,15 @@ namespace phoodchef.Controllers
 
         [HttpGet]
         [Route("api/Libraries")]
-        public IHttpActionResult GetAllLibraries()
+        public IHttpActionResult GetAllLibraries([FromUri] int limit = 10, [FromUri] int page = 1, [FromUri] string search = null)
         {
-            var result = db.libraries.ProjectTo<LibraryDto>().ToList();
+            var result = db.libraries
+                .Where(l => search == null || l.Name.Contains(search))
+                .OrderBy(l => l.ID)
+                .Skip((page - 1) * limit)
+                .Take(limit)
+                .ProjectTo<LibraryDto>()
+                .ToList();
             return new ReturnWrapper(result);
         }
 
