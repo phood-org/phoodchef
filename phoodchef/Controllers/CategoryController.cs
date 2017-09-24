@@ -21,9 +21,15 @@ namespace phoodchef.Controllers
 
         [HttpGet]
         [Route("api/categories")]
-        public IHttpActionResult GetAllCategories()
+        public IHttpActionResult GetAllCategories([FromUri] int limit = 10, [FromUri] int page = 1, [FromUri] string search = null)
         {
-            var result = db.categories.ProjectTo<CategoryDto>().ToList();
+            var result = db.categories
+                .Where(c => search == null || c.Name.Contains(search))
+                .OrderBy(c => c.ID)
+                .Skip((page - 1) * limit)
+                .Take(limit)
+                .ProjectTo<CategoryDto>()
+                .ToList();
             return new ReturnWrapper(result);
         }
 
