@@ -6,24 +6,24 @@
     <edmx:Diagrams>
       <Diagram DiagramId="b1401e1dde0d4ff29c29c804bb66e13a" Name="Diagram1" ZoomLevel="55">
         <EntityTypeShape EntityType="phoodbModel.C__RefactorLog" Width="1.5" PointX="5.75" PointY="0.75" />
-        <EntityTypeShape EntityType="phoodbModel.category" Width="1.5" PointX="0.75" PointY="2.75" />
-        <EntityTypeShape EntityType="phoodbModel.enduser" Width="1.5" PointX="3" PointY="9.75" />
-        <EntityTypeShape EntityType="phoodbModel.ingredient" Width="1.5" PointX="3" PointY="1.625" />
-        <EntityTypeShape EntityType="phoodbModel.library" Width="1.5" PointX="0.75" PointY="5.625" />
-        <EntityTypeShape EntityType="phoodbModel.recIngred" Width="1.5" PointX="5.25" PointY="5.5" />
-        <EntityTypeShape EntityType="phoodbModel.recipe" Width="1.5" PointX="3" PointY="4.75" />
-        <EntityTypeShape EntityType="phoodbModel.recRate" Width="1.5" PointX="8.25" PointY="10.375" />
-        <EntityTypeShape EntityType="phoodbModel.userIngred" Width="1.5" PointX="5.25" PointY="9.75" />
-        <EntityTypeShape EntityType="phoodbModel.utensil" Width="1.5" PointX="8.25" PointY="7.375" />
-        <AssociationConnector Association="phoodbModel.FK__recRate__UserId__4B7734FF" />
-        <AssociationConnector Association="phoodbModel.FK__userIngre__UserI__40058253" />
-        <AssociationConnector Association="phoodbModel.FK__recIngred__Ingre__3587F3E0" />
-        <AssociationConnector Association="phoodbModel.FK__userIngre__Ingre__40F9A68C" />
-        <AssociationConnector Association="phoodbModel.FK__recIngred__RecId__3493CFA7" />
-        <AssociationConnector Association="phoodbModel.FK__recRate__RecId__4C6B5938" />
+        <EntityTypeShape EntityType="phoodbModel.category" Width="1.5" PointX="0.75" PointY="3.25" />
+        <EntityTypeShape EntityType="phoodbModel.enduser" Width="1.5" PointX="3" PointY="10.25" />
+        <EntityTypeShape EntityType="phoodbModel.ingredient" Width="1.5" PointX="3" PointY="2.125" />
+        <EntityTypeShape EntityType="phoodbModel.library" Width="1.5" PointX="0.75" PointY="6.125" />
+        <EntityTypeShape EntityType="phoodbModel.recIngred" Width="1.5" PointX="5.25" PointY="5.625" />
+        <EntityTypeShape EntityType="phoodbModel.recipe" Width="1.5" PointX="3" PointY="5.25" />
+        <EntityTypeShape EntityType="phoodbModel.recRate" Width="1.5" PointX="8.25" PointY="7.625" />
+        <EntityTypeShape EntityType="phoodbModel.userIngred" Width="1.5" PointX="5.25" PointY="10.25" />
+        <EntityTypeShape EntityType="phoodbModel.utensil" Width="1.5" PointX="8.25" PointY="11" />
+        <AssociationConnector Association="phoodbModel.FK__recRate__UserId__440B1D61" />
+        <AssociationConnector Association="phoodbModel.FK__userIngre__UserI__46E78A0C" />
+        <AssociationConnector Association="phoodbModel.FK__recIngred__Ingre__3F466844" />
+        <AssociationConnector Association="phoodbModel.FK__userIngre__Ingre__47DBAE45" />
+        <AssociationConnector Association="phoodbModel.FK__recIngred__RecId__403A8C7D" />
+        <AssociationConnector Association="phoodbModel.FK__recRate__RecId__4316F928" />
         <AssociationConnector Association="phoodbModel.recCat" />
         <AssociationConnector Association="phoodbModel.recLib" />
-        <AssociationConnector Association="phoodbModel.recUten" />
+        <AssociationConnector Association="phoodbModel.RecUten" />
         <AssociationConnector Association="phoodbModel.userLib" />
         <AssociationConnector Association="phoodbModel.userUten" />
       </Diagram>

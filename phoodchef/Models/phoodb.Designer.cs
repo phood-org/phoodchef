@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Pearse.Hutson\Documents\Personal Projects\phoodchef\phoodchef\Models\phoodb.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\hhuts\Documents\phood\phoodchef\phoodchef\Models\phoodb.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

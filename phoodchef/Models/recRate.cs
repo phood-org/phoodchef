@@ -17,6 +17,8 @@ namespace phoodchef.Models
         public int UserId { get; set; }
         public int RecId { get; set; }
         public Nullable<int> Rate { get; set; }
+        public Nullable<bool> IsFavorite { get; set; }
+        public string Review { get; set; }
     
         public virtual enduser enduser { get; set; }
         public virtual recipe recipe { get; set; }

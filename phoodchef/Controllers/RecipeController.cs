@@ -132,12 +132,21 @@ namespace phoodchef.Controllers
             return new ReturnWrapper(Mapper.Map<recipe, RecipeDto>(dbRecipe), errorMessages);
         }
 
+        [HttpGet]
+        [Route("api/recipes/{id:int}/ingredients")]
+        public IHttpActionResult GetAllIngredients(int id)
+        {
+            var dbRecipe = db.recipes.FirstOrDefault(r => r.ID == id);
+
+            return new ReturnWrapper(Mapper.Map<recipe, RecipeDto>(dbRecipe).Ingredients);
+        }
+
         [HttpPost]
         [Route("api/recipes/{id:int}/ingredients")]
         public IHttpActionResult AddIngredientToRecipe(int id, [FromBody]RecIngredDto recIngredDto)
         {
             var dbRecipe = db.recipes.FirstOrDefault(r => r.ID == id);
-            var dbIngredient = db.ingredients.FirstOrDefault(i => i.ID == recIngredDto.IngredientId);
+            var dbIngredient = db.ingredients.FirstOrDefault(i => i.ID == recIngredDto.IngredId);
 
             List<string> errors = new List<string>();
 
@@ -174,12 +183,12 @@ namespace phoodchef.Controllers
         }
 
         [HttpDelete]
-        [Route("api/recipes/{id:int}/ingredients/{ingredientId:int}")]
-        public IHttpActionResult RemoveIngredientFromRecipe(int id, int ingredientId)
+        [Route("api/recipes/{id:int}/ingredients")]
+        public IHttpActionResult RemoveIngredientFromRecipe(int id, [FromBody]int IngredId)
         {
             var dbRecipe = db.recipes.FirstOrDefault(r => r.ID == id);
-            var dbIngredient = db.ingredients.FirstOrDefault(i => i.ID == ingredientId);
-            var dbRecIngred = db.recIngreds.FirstOrDefault(ri => ri.RecId == id && ri.IngredId == ingredientId);
+            var dbIngredient = db.ingredients.FirstOrDefault(i => i.ID == IngredId);
+            var dbRecIngred = db.recIngreds.FirstOrDefault(ri => ri.RecId == id && ri.IngredId == IngredId);
 
             List<string> errors = new List<string>();
 
@@ -203,7 +212,7 @@ namespace phoodchef.Controllers
 
             db.recIngreds.Remove(dbRecIngred);
             db.SaveChanges();
-            return new ReturnWrapper(HttpStatusCode.OK, $"Ingredient with ID {ingredientId} has been removed from Recipe {id}.");
+            return new ReturnWrapper(HttpStatusCode.OK, $"Ingredient with ID {IngredId} has been removed from Recipe {id}.");
         }
     }
 }

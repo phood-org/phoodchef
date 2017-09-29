@@ -18,6 +18,9 @@ namespace phoodchef.Models
         public int IngredId { get; set; }
         public Nullable<decimal> Amt { get; set; }
         public string Unit { get; set; }
+        public string IngredRole { get; set; }
+        public Nullable<int> IngredRec { get; set; }
+        public Nullable<int> SubFor { get; set; }
     
         public virtual ingredient ingredient { get; set; }
         public virtual recipe recipe { get; set; }
